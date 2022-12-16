@@ -15,4 +15,6 @@ class HomePageTest(TestCase):
         res = self.client.get("/")
         html = res.content.decode("utf8")
         expected_html = render_to_string("home.html")
+
+        self.assertTemplateUsed(res, "home.html")
         self.assertEqual(html, expected_html)
