@@ -31,7 +31,10 @@ class NewVisitorTest(unittest.TestCase):
         # User sees 1 item in the list on page
         table = self.browser.find_element(By.ID, "id_list_table")
         rows = table.find_elements(By.TAG_NAME, "tr")
-        self.assertTrue(any(row.text == "1: Write text" for row in rows))
+        self.assertTrue(
+            any(row.text == "1: Write text" for row in rows),
+            "New todo item did not appear in table",
+        )
         # User is still invited to enter a new item
 
         # User enters "Read text" into field, presses Enter, page updates with 2 items
